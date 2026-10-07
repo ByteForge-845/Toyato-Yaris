@@ -1,0 +1,1948 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toyota Showroom Global | Innovación y Potencia</title>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --toyota-red: #EB0A1E;
+            --toyota-dark-red: #C50012;
+            --bg-main: #0F1015;
+            --bg-card: #181A20;
+            --bg-card-hover: #1F232D;
+            --border-color: #2A2E39;
+            --text-main: #F3F4F6;
+            --text-muted: #9CA3AF;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-main);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--toyota-red);
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(15, 16, 21, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .brand-badge {
+            width: 40px;
+            height: 40px;
+            background-color: var(--toyota-red);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 900;
+            font-size: 20px;
+            box-shadow: 0 10px 20px rgba(235, 10, 30, 0.3);
+            transition: var(--transition);
+        }
+
+        .brand-logo:hover .brand-badge {
+            transform: scale(1.05);
+        }
+
+        .brand-texts {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-name {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: white;
+        }
+
+        .brand-sub {
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--toyota-red);
+        }
+
+        .nav-cta {
+            background-color: var(--toyota-red);
+            color: white;
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 10px 20px rgba(235, 10, 30, 0.2);
+            transition: var(--transition);
+        }
+
+        .nav-cta:hover {
+            background-color: var(--toyota-dark-red);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px rgba(235, 10, 30, 0.4);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 2rem;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .mobile-menu a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.35;
+            transform: scale(1.05);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, var(--bg-main) 0%, rgba(15,16,21,0.5) 50%, var(--bg-main) 100%);
+            z-index: 1;
+        }
+
+        .hero-glow {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 300px;
+            background: rgba(235, 10, 30, 0.15);
+            filter: blur(140px);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 18px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            color: var(--toyota-red);
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--toyota-red);
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.6); opacity: 0.4; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--toyota-red), #ff4d5e, #ff8c42);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 2.5rem auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background-color: var(--toyota-red);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 25px rgba(235, 10, 30, 0.3);
+            transition: var(--transition);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--toyota-dark-red);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(235, 10, 30, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-3px);
+        }
+
+        /* Stats Bar */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 900px;
+            margin: 5rem auto 0 auto;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: white;
+        }
+
+        .stat-item.highlight h3 {
+            color: var(--toyota-red);
+        }
+
+        .stat-item p {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+
+        .showcase {
+            padding: 7rem 2rem;
+            background-color: #12141C;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .section-subtitle {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--toyota-red);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            font-weight: 800;
+            color: white;
+        }
+
+        .section-desc {
+            max-width: 450px;
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        /* Filter Buttons */
+        .filter-container {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background-color: var(--bg-card-hover);
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover {
+            background-color: var(--border-color);
+            color: white;
+        }
+
+        .filter-btn.active {
+            background-color: var(--toyota-red);
+            color: white;
+            border-color: var(--toyota-red);
+            box-shadow: 0 5px 15px rgba(235, 10, 30, 0.3);
+        }
+
+        /* Car Grid & Cards */
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 2rem;
+        }
+
+        .car-card {
+            background-color: var(--bg-card);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .car-card:hover {
+            border-color: rgba(235, 10, 30, 0.5);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .car-image-wrapper {
+            position: relative;
+            height: 260px;
+            overflow: hidden;
+            background-color: #0b0c10;
+        }
+
+        .car-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .car-card:hover .car-image-wrapper img {
+            transform: scale(1.08);
+        }
+
+        .car-tags {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            z-index: 10;
+            display: flex;
+            gap: 8px;
+        }
+
+        .tag {
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tag-red {
+            background-color: var(--toyota-red);
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .tag-dark {
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            color: #E5E7EB;
+        }
+
+        .tag-green {
+            background-color: #059669;
+            color: white;
+        }
+
+        .car-image-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, var(--bg-card) 0%, transparent 70%);
+            opacity: 0.8;
+        }
+
+        .car-content {
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .car-header-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .car-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .car-card:hover .car-title {
+            color: var(--toyota-red);
+        }
+
+        .car-price {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--toyota-red);
+        }
+
+        .car-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .specs-badge-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            padding: 1rem 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .spec-box {
+            background-color: rgba(15, 16, 21, 0.6);
+            padding: 8px 4px;
+            border-radius: 10px;
+        }
+
+        .spec-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .spec-val {
+            font-size: 12px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .spec-val.green {
+            color: #34D399;
+        }
+
+        .btn-card {
+            width: 100%;
+            background-color: var(--bg-card-hover);
+            color: white;
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .car-card:hover .btn-card {
+            background-color: var(--toyota-red);
+            border-color: var(--toyota-red);
+        }
+
+        .innovation {
+            padding: 7rem 2rem;
+            background-color: var(--bg-main);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .innovation-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        @media (max-width: 968px) {
+            .innovation-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature-row {
+            display: flex;
+            gap: 1.2rem;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            width: 44px;
+            height: 44px;
+            background-color: rgba(235, 10, 30, 0.15);
+            color: var(--toyota-red);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+            margin-top: 4px;
+        }
+
+        .feature-row h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 4px;
+        }
+
+        .feature-row p {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .innovation-img-wrapper {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+
+        .innovation-img-wrapper img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .innovation-img-wrapper:hover img {
+            transform: scale(1.05);
+        }
+
+        .floating-card {
+            position: absolute;
+            bottom: 2rem;
+            left: 2rem;
+            right: 2rem;
+            background: rgba(15, 16, 21, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 1.2rem 1.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Dealerships */
+        .dealerships {
+            padding: 7rem 2rem;
+            background-color: #12141C;
+        }
+
+        .dealership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .dealer-card {
+            background-color: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+        }
+
+        .dealer-card:hover {
+            border-color: rgba(235, 10, 30, 0.4);
+        }
+
+        .dealer-icon {
+            width: 48px;
+            height: 48px;
+            background-color: rgba(235, 10, 30, 0.1);
+            color: var(--toyota-red);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 1.5rem;
+        }
+
+        .dealer-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .dealer-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .dealer-info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 13px;
+            color: #E5E7EB;
+            margin-bottom: 2rem;
+        }
+
+        .dealer-info-list i {
+            color: var(--toyota-red);
+            margin-right: 8px;
+            width: 16px;
+        }
+
+        .btn-dealer {
+            background-color: var(--bg-card-hover);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .dealer-card:hover .btn-dealer {
+            background-color: var(--toyota-red);
+            border-color: var(--toyota-red);
+        }
+
+        .testdrive-section {
+            padding: 7rem 2rem;
+            background-color: var(--bg-main);
+        }
+
+        .testdrive-box {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 28px;
+            padding: 3rem 4rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+        }
+
+        @media (max-width: 768px) {
+            .testdrive-box {
+                padding: 2rem;
+            }
+        }
+
+        .form-glow {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 250px;
+            background: rgba(235, 10, 30, 0.1);
+            filter: blur(100px);
+            pointer-events: none;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+        }
+
+        .form-control {
+            background-color: #12141C;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 14px 18px;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--toyota-red);
+            box-shadow: 0 0 0 3px rgba(235, 10, 30, 0.15);
+        }
+
+        select.form-control {
+            cursor: pointer;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .success-alert {
+            display: none;
+            margin-top: 1.5rem;
+            padding: 16px;
+            background-color: rgba(5, 150, 105, 0.1);
+            border: 1px solid rgba(5, 150, 105, 0.3);
+            border-radius: 14px;
+            color: #34D399;
+            text-align: center;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-container {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            width: 100%;
+            max-width: 800px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.6);
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-overlay.active .modal-container {
+            transform: scale(1);
+        }
+
+        .modal-header-img {
+            position: relative;
+            height: 300px;
+            background-color: #0b0c10;
+            flex-shrink: 0;
+        }
+
+        .modal-header-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.7);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .modal-close-btn:hover {
+            background-color: var(--toyota-red);
+        }
+
+        .modal-title-area {
+            position: absolute;
+            bottom: 20px;
+            left: 24px;
+            right: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .modal-body {
+            padding: 2rem;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .modal-specs-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 1.5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .modal-specs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .modal-spec-card {
+            background-color: #12141C;
+            padding: 12px;
+            border-radius: 14px;
+            border: 1px solid var(--border-color);
+        }
+
+        .features-list-modal {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 1.5rem;
+        }
+
+        @media (max-width: 600px) {
+            .features-list-modal {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .feature-check {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: #D1D5DB;
+        }
+
+        .feature-check i {
+            color: var(--toyota-red);
+        }
+
+        .modal-footer {
+            padding: 1.5rem 2rem;
+            background-color: #12141C;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0B0C10;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 5rem 2rem 2rem 2rem;
+        }
+
+        .footer-grid {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        @media (max-width: 968px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .footer-col h4 {
+            color: white;
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--toyota-red);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            font-size: 18px;
+        }
+
+        .social-icons a {
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            color: var(--toyota-red);
+        }
+
+        .footer-bottom {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-legal a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .footer-legal a:hover {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="brand-logo">
+                <div class="brand-badge">T</div>
+                <div class="brand-texts">
+                    <span class="brand-name">TOYOTA</span>
+                    <span class="brand-sub">Showroom 2026</span>
+                </div>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#modelos">Modelos</a></li>
+                <li><a href="#innovacion">Innovación & Híbridos</a></li>
+                <li><a href="#concesionarios">Concesionarios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <a href="#testdrive" class="nav-cta">
+                    <i class="fa-solid fa-car-side"></i> Reservar Test Drive
+                </a>
+                <button class="mobile-toggle" id="mobile-toggle-btn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="#modelos">Modelos</a>
+            <a href="#innovacion">Innovación & Híbridos</a>
+            <a href="#concesionarios">Concesionarios</a>
+            <a href="#contacto">Contacto</a>
+            <a href="#testdrive" style="color: var(--toyota-red); font-weight: 700;">Reservar Test Drive</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-bg">
+            <img src="https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?q=80&w=1920&auto=format&fit=crop" alt="Toyota Hero Background">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-glow"></div>
+
+        <div class="hero-content">
+            <div class="hero-badge">
+                <div class="hero-dot"></div>
+                Nueva Colección 2026 Disponibilidad Inmediata
+            </div>
+            
+            <h1>Ingeniería Legendaria. <span>Diseño Evolucionado.</span></h1>
+            
+            <p>Descubre la gama más avanzada de vehículos híbridos, pickups indetenibles y SUVs diseñados para superar cualquier camino con máxima eficiencia.</p>
+
+            <div class="hero-buttons">
+                <a href="#modelos" class="btn-primary">
+                    Explorar Modelos <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <a href="#innovacion" class="btn-secondary">
+                    <i class="fa-solid fa-bolt" style="color: var(--toyota-red);"></i> Tecnología Híbrida
+                </a>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item highlight">
+                    <h3>5+</h3>
+                    <p>Modelos Emblemáticos</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>Garantía Toyota</p>
+                </div>
+                <div class="stat-item highlight">
+                    <h3>4x4</h3>
+                    <p>Tracción Extrema</p>
+                </div>
+                <div class="stat-item">
+                    <h3>Eco</h3>
+                    <p>Híbridos Avanzados</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="showcase" id="modelos">
+        <div class="container">
+            <div class="section-header">
+                <div>
+                    <span class="section-subtitle">Exhibición Oficial</span>
+                    <h2 class="section-title">Nuestros Modelos</h2>
+                </div>
+                <p class="section-desc">Filtra por categoría y encuentra el Toyota perfecto que se adapte a tu estilo de vida profesional y aventurero.</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="suv">SUVs</button>
+                <button class="filter-btn" data-filter="pickup">Pickups</button>
+                <button class="filter-btn" data-filter="sedan">Sedanes</button>
+                <button class="filter-btn" data-filter="deportivo">Deportivos</button>
+                <button class="filter-btn" data-filter="hybrid">Híbridos</button>
+            </div>
+
+            <!-- Car Grid -->
+            <div class="car-grid" id="car-grid">
+                <!-- Car 1: Hilux -->
+                <div class="car-card" data-category="pickup">
+                    <div class="car-image-wrapper">
+                        <div class="car-tags">
+                            <span class="tag tag-red">Pickup</span>
+                            <span class="tag tag-dark">4x4 Diesel</span>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=800&auto=format&fit=crop" alt="Toyota Hilux GR-S">
+                        <div class="car-image-overlay"></div>
+                    </div>
+                    <div class="car-content">
+                        <div class="car-header-info">
+                            <h3 class="car-title">Toyota Hilux GR-S</h3>
+                            <span class="car-price">$48,900</span>
+                        </div>
+                        <p class="car-desc">La pickup más resistente del mundo con ADN Gazoo Racing, suspensión deportiva y máxima potencia de arrastre.</p>
+                        
+                        <div class="specs-badge-grid">
+                            <div class="spec-box"><span class="spec-label">Motor</span><span class="spec-val">2.8L Turbo</span></div>
+                            <div class="spec-box"><span class="spec-label">Potencia</span><span class="spec-val">224 HP</span></div>
+                            <div class="spec-box"><span class="spec-label">Transmisión</span><span class="spec-val">Auto 6Vel</span></div>
+                        </div>
+
+                        <button class="btn-card" onclick="openCarModal('hilux')">
+                            Ver Detalles & Especificaciones <i class="fa-solid fa-chevron-right" style="font-size: 11px;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Car 2: Land Cruiser -->
+                <div class="car-card" data-category="suv">
+                    <div class="car-image-wrapper">
+                        <div class="car-tags">
+                            <span class="tag tag-red">SUV Lujo</span>
+                            <span class="tag tag-dark">V6 Bi-Turbo</span>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?q=80&w=800&auto=format&fit=crop" alt="Land Cruiser 300">
+                        <div class="car-image-overlay"></div>
+                    </div>
+                    <div class="car-content">
+                        <div class="car-header-info">
+                            <h3 class="car-title">Land Cruiser 300</h3>
+                            <span class="car-price">$89,500</span>
+                        </div>
+                        <p class="car-desc">El todoterreno definitivo. Confort de primera clase combinado con capacidades off-road legendarias.</p>
+                        
+                        <div class="specs-badge-grid">
+                            <div class="spec-box"><span class="spec-label">Motor</span><span class="spec-val">3.5L V6 Twin</span></div>
+                            <div class="spec-box"><span class="spec-label">Potencia</span><span class="spec-val">409 HP</span></div>
+                            <div class="spec-box"><span class="spec-label">Tracción</span><span class="spec-val">4x4 Full</span></div>
+                        </div>
+
+                        <button class="btn-card" onclick="openCarModal('landcruiser')">
+                            Ver Detalles & Especificaciones <i class="fa-solid fa-chevron-right" style="font-size: 11px;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Car 3: Corolla Hybrid -->
+                <div class="car-card" data-category="sedan hybrid">
+                    <div class="car-image-wrapper">
+                        <div class="car-tags">
+                            <span class="tag tag-green">Híbrido</span>
+                            <span class="tag tag-dark">Sedán</span>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1623869675781-80aa310129e5?q=80&w=800&auto=format&fit=crop" alt="Corolla Hybrid">
+                        <div class="car-image-overlay"></div>
+                    </div>
+                    <div class="car-content">
+                        <div class="car-header-info">
+                            <h3 class="car-title">Corolla Hybrid</h3>
+                            <span class="car-price">$26,800</span>
+                        </div>
+                        <p class="car-desc">Eficiencia insuperable con tecnología híbrida autorrecargable de cuarta generación. Elegante y vanguardista.</p>
+                        
+                        <div class="specs-badge-grid">
+                            <div class="spec-box"><span class="spec-label">Consumo</span><span class="spec-val green">25 km/L</span></div>
+                            <div class="spec-box"><span class="spec-label">Potencia</span><span class="spec-val">138 HP</span></div>
+                            <div class="spec-box"><span class="spec-label">Transmisión</span><span class="spec-val">e-CVT</span></div>
+                        </div>
+
+                        <button class="btn-card" onclick="openCarModal('corolla')">
+                            Ver Detalles & Especificaciones <i class="fa-solid fa-chevron-right" style="font-size: 11px;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Car 4: RAV4 Hybrid -->
+                <div class="car-card" data-category="suv hybrid">
+                    <div class="car-image-wrapper">
+                        <div class="car-tags">
+                            <span class="tag tag-green">Híbrido</span>
+                            <span class="tag tag-dark">SUV AWD</span>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=800&auto=format&fit=crop" alt="RAV4 Hybrid">
+                        <div class="car-image-overlay"></div>
+                    </div>
+                    <div class="car-content">
+                        <div class="car-header-info">
+                            <h3 class="car-title">RAV4 Hybrid AWD</h3>
+                            <span class="car-price">$34,500</span>
+                        </div>
+                        <p class="car-desc">El SUV más vendido del mundo con tracción total eléctrica inteligente y rendimiento sobresaliente.</p>
+                        
+                        <div class="specs-badge-grid">
+                            <div class="spec-box"><span class="spec-label">Potencia</span><span class="spec-val">219 HP</span></div>
+                            <div class="spec-box"><span class="spec-label">Tracción</span><span class="spec-val">AWD-i</span></div>
+                            <div class="spec-box"><span class="spec-label">Autonomía</span><span class="spec-val green">950 km</span></div>
+                        </div>
+
+                        <button class="btn-card" onclick="openCarModal('rav4')">
+                            Ver Detalles & Especificaciones <i class="fa-solid fa-chevron-right" style="font-size: 11px;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Car 5: Yaris Cross -->
+                <div class="car-card" data-category="suv hybrid">
+                    <div class="car-image-wrapper">
+                        <div class="car-tags">
+                            <span class="tag tag-red">Compact SUV</span>
+                            <span class="tag tag-green">Híbrido</span>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=800&auto=format&fit=crop" alt="Yaris Cross Hybrid">
+                        <div class="car-image-overlay"></div>
+                    </div>
+                    <div class="car-content">
+                        <div class="car-header-info">
+                            <h3 class="car-title">Yaris Cross Hybrid</h3>
+                            <span class="car-price">$28,200</span>
+                        </div>
+                        <p class="car-desc">Diseño urbano dinámico, gran altura libre al suelo y máxima agilidad para moverte con estilo por la ciudad.</p>
+                        
+                        <div class="specs-badge-grid">
+                            <div class="spec-box"><span class="spec-label">Motor</span><span class="spec-val">1.5L Híbrido</span></div>
+                            <div class="spec-box"><span class="spec-label">Potencia</span><span class="spec-val">116 HP</span></div>
+                            <div class="spec-box"><span class="spec-label">Consumo</span><span class="spec-val green">26 km/L</span></div>
+                        </div>
+
+                        <button class="btn-card" onclick="openCarModal('yariscross')">
+                            Ver Detalles & Especificaciones <i class="fa-solid fa-chevron-right" style="font-size: 11px;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Car 6: GR Supra -->
+                <div class="car-card" data-category="deportivo">
+                    <div class="car-image-wrapper">
+                        <div class="car-tags">
+                            <span class="tag tag-red">Deportivo</span>
+                            <span class="tag tag-dark">Bi-Turbo</span>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=800&auto=format&fit=crop" alt="GR Supra 3.0L">
+                        <div class="car-image-overlay"></div>
+                    </div>
+                    <div class="car-content">
+                        <div class="car-header-info">
+                            <h3 class="car-title">GR Supra 3.0L</h3>
+                            <span class="car-price">$56,400</span>
+                        </div>
+                        <p class="car-desc">Pura adrenalina y precisión en cada curva. Diseñado en circuitos de carreras para el conductor apasionado.</p>
+                        
+                        <div class="specs-badge-grid">
+                            <div class="spec-box"><span class="spec-label">0-100 km/h</span><span class="spec-val">4.1 seg</span></div>
+                            <div class="spec-box"><span class="spec-label">Potencia</span><span class="spec-val">382 HP</span></div>
+                            <div class="spec-box"><span class="spec-label">Tracción</span><span class="spec-val">Trasera</span></div>
+                        </div>
+
+                        <button class="btn-card" onclick="openCarModal('supra')">
+                            Ver Detalles & Especificaciones <i class="fa-solid fa-chevron-right" style="font-size: 11px;"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="innovation" id="innovacion">
+        <div class="container">
+            <div class="innovation-grid">
+                <div>
+                    <span class="section-subtitle">Liderazgo Ambiental</span>
+                    <h2 class="section-title" style="margin-bottom: 1.5rem;">Tecnología Híbrida Avanzada Toyota</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 2rem;">
+                        Nuestros sistemas híbridos autorrecargables combinan un motor de combustión ultra eficiente con potentes motores eléctricos. Sin necesidad de cables ni enchufes, la batería se recarga automáticamente durante la desaceleración y el frenado.
+                    </p>
+                    
+                    <div class="feature-list">
+                        <div class="feature-row">
+                            <div class="feature-icon"><i class="fa-solid fa-leaf"></i></div>
+                            <div>
+                                <h4>Menor Emisión y Consumo</h4>
+                                <p>Hasta un 50% de ahorro en combustible en trayectos urbanos diarios con etiqueta ECO.</p>
+                            </div>
+                        </div>
+                        <div class="feature-row">
+                            <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                            <div>
+                                <h4>Toyota Safety Sense 3.0</h4>
+                                <p>Asistencias avanzadas de conducción: frenado autónomo de emergencia y control crucero adaptativo.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#testdrive" class="btn-primary" style="margin-top: 1rem;">
+                        Experimenta el Manejo Híbrido <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="innovation-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=1000&auto=format&fit=crop" alt="Toyota Hybrid Dashboard">
+                    <div class="floating-card">
+                        <div>
+                            <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Modo Eléctrico EV</span>
+                            <h4 style="font-size: 16px; color: white; font-weight: 700;">Silencioso & Cero Emisiones</h4>
+                        </div>
+                        <div style="width: 44px; height: 44px; background: rgba(5,150,105,0.2); color: #34D399; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px;">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dealerships Section -->
+    <section class="dealerships" id="concesionarios">
+        <div class="container">
+            <div style="text-align: center; max-width: 650px; margin: 0 auto 3rem auto;">
+                <span class="section-subtitle">Red Autorizada</span>
+                <h2 class="section-title">Encuentra Tu Concesionario</h2>
+                <p style="color: var(--text-muted); margin-top: 1rem;">Visita nuestros showrooms autorizados para atención personalizada, servicio técnico oficial y pruebas de manejo.</p>
+            </div>
+
+            <div class="dealership-grid">
+                <div class="dealer-card">
+                    <div>
+                        <div class="dealer-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <h3>Toyota Flagship Center</h3>
+                        <p>Av. Libertador con Calle Principal, Centro Comercial Motor.</p>
+                        <div class="dealer-info-list">
+                            <div><i class="fa-solid fa-phone"></i> +1 (800) 555-TOYOTA</div>
+                            <div><i class="fa-solid fa-clock"></i> Lun - Sáb: 8:00 AM - 7:00 PM</div>
+                        </div>
+                    </div>
+                    <a href="#testdrive" class="btn-dealer">Agendar Cita en Sucursal</a>
+                </div>
+
+                <div class="dealer-card">
+                    <div>
+                        <div class="dealer-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <h3>Toyota Metropolitan Showroom</h3>
+                        <p>Autopista Norte KM 14, Zona Industrial Exclusiva.</p>
+                        <div class="dealer-info-list">
+                            <div><i class="fa-solid fa-phone"></i> +1 (800) 555-4321</div>
+                            <div><i class="fa-solid fa-clock"></i> Lun - Sáb: 9:00 AM - 6:30 PM</div>
+                        </div>
+                    </div>
+                    <a href="#testdrive" class="btn-dealer">Agendar Cita en Sucursal</a>
+                </div>
+
+                <div class="dealer-card">
+                    <div>
+                        <div class="dealer-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <h3>Toyota Off-Road & Pickup Center</h3>
+                        <p>Boulevard Sur, Sector Industrial de 4x4.</p>
+                        <div class="dealer-info-list">
+                            <div><i class="fa-solid fa-phone"></i> +1 (800) 555-8888</div>
+                            <div><i class="fa-solid fa-clock"></i> Lun - Vie: 8:00 AM - 6:00 PM</div>
+                        </div>
+                    </div>
+                    <a href="#testdrive" class="btn-dealer">Agendar Cita en Sucursal</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testdrive-section" id="testdrive">
+        <div class="testdrive-box">
+            <div class="form-glow"></div>
+            
+            <div style="text-align: center; max-width: 600px; margin: 0 auto 3rem auto;">
+                <span class="section-subtitle">Experiencia Exclusiva</span>
+                <h2 class="section-title">Reserva tu Test Drive o Cotización</h2>
+                <p style="color: var(--text-muted); font-size: 14px; margin-top: 10px;">Completa tus datos y un asesor especializado se pondrá en contacto contigo en menos de 2 horas.</p>
+            </div>
+
+            <form id="contact-form" onsubmit="handleFormSubmit(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Nombre Completo</label>
+                        <input type="text" class="form-control" required placeholder="Ej. Carlos Mendoza">
+                    </div>
+                    <div class="form-group">
+                        <label>Correo Electrónico</label>
+                        <input type="email" class="form-control" required placeholder="carlos@example.com">
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Teléfono / WhatsApp</label>
+                        <input type="tel" class="form-control" required placeholder="+1 (555) 019-2834">
+                    </div>
+                    <div class="form-group">
+                        <label>Modelo de Interés</label>
+                        <select class="form-control" id="form-model-select">
+                            <option value="Hilux">Toyota Hilux GR-S</option>
+                            <option value="Land Cruiser">Toyota Land Cruiser 300</option>
+                            <option value="Corolla Hybrid">Toyota Corolla Hybrid</option>
+                            <option value="RAV4 Hybrid">Toyota RAV4 Hybrid AWD</option>
+                            <option value="Yaris Cross">Toyota Yaris Cross Hybrid</option>
+                            <option value="GR Supra">Toyota GR Supra 3.0L</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Mensaje o Comentarios (Opcional)</label>
+                    <textarea class="form-control" placeholder="Indica fecha preferida o sucursal de preferencia..."></textarea>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button type="submit" class="btn-primary" style="border: none; cursor: pointer; width: 100%; justify-content: center; font-size: 16px;">
+                        Enviar Solicitud de Test Drive
+                    </button>
+                </div>
+            </form>
+
+            <div class="success-alert" id="success-box">
+                <i class="fa-solid fa-circle-check" style="margin-right: 8px;"></i> ¡Solicitud enviada con éxito! Un asesor se comunicará contigo en breve.
+            </div>
+        </div>
+    </section>
+
+    <!-- Car Detail Modal -->
+    <div class="modal-overlay" id="car-modal">
+        <div class="modal-container">
+            <div class="modal-header-img">
+                <img id="modal-img" src="" alt="Car Detail">
+                <button class="modal-close-btn" onclick="closeCarModal()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <div class="modal-title-area">
+                    <div>
+                        <span id="modal-category" class="tag tag-red" style="margin-bottom: 8px; display: inline-block;"></span>
+                        <h3 id="modal-title" style="font-size: 28px; font-weight: 800; color: white;"></h3>
+                    </div>
+                    <span id="modal-price" style="font-size: 24px; font-weight: 800; color: var(--toyota-red);"></span>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <p id="modal-desc" style="color: var(--text-muted); font-size: 15px; line-height: 1.7;"></p>
+
+                <div class="modal-specs-grid">
+                    <div class="modal-spec-card">
+                        <span style="font-size: 11px; color: var(--text-muted); display: block; margin-bottom: 4px; font-weight: 600;">Motorización</span>
+                        <span id="modal-engine" style="font-size: 13px; font-weight: 700; color: white;"></span>
+                    </div>
+                    <div class="modal-spec-card">
+                        <span style="font-size: 11px; color: var(--text-muted); display: block; margin-bottom: 4px; font-weight: 600;">Potencia Máxima</span>
+                        <span id="modal-hp" style="font-size: 13px; font-weight: 700; color: white;"></span>
+                    </div>
+                    <div class="modal-spec-card">
+                        <span style="font-size: 11px; color: var(--text-muted); display: block; margin-bottom: 4px; font-weight: 600;">Transmisión</span>
+                        <span id="modal-trans" style="font-size: 13px; font-weight: 700; color: white;"></span>
+                    </div>
+                    <div class="modal-spec-card">
+                        <span style="font-size: 11px; color: var(--text-muted); display: block; margin-bottom: 4px; font-weight: 600;">Tracción / Rend.</span>
+                        <span id="modal-extra" style="font-size: 13px; font-weight: 700; color: white;"></span>
+                    </div>
+                </div>
+
+                <h4 style="font-size: 16px; font-weight: 700; color: white; margin-top: 1.5rem; margin-bottom: 1rem;">Equipamiento Destacado</h4>
+                <div class="features-list-modal" id="modal-features">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <span style="font-size: 12px; color: var(--text-muted);">Garantía oficial de fábrica de 5 años o 150,000 km.</span>
+                <a href="#testdrive" onclick="selectCarAndCloseModal()" class="btn-primary" style="padding: 10px 24px; font-size: 13px;">
+                    Cotizar o Reservar Test Drive
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 1.2rem;">
+                    <div style="width: 32px; height: 32px; background: var(--toyota-red); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900;">T</div>
+                    <span style="font-size: 16px; font-weight: 800; color: white; letter-spacing: 1px;">TOYOTA SHOWROOM</span>
+                </div>
+                <p style="font-size: 14px; margin-bottom: 1.5rem; max-width: 300px;">Liderando la movilidad del futuro con calidad inquebrantable, seguridad y tecnología híbrida avanzada.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Modelos</h4>
+                <ul class="footer-links">
+                    <li><a href="#modelos">Hilux GR-S</a></li>
+                    <li><a href="#modelos">Land Cruiser 300</a></li>
+                    <li><a href="#modelos">Corolla Hybrid</a></li>
+                    <li><a href="#modelos">RAV4 Hybrid</a></li>
+                    <li><a href="#modelos">GR Supra</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Innovación</h4>
+                <ul class="footer-links">
+                    <li><a href="#innovacion">Tecnología Híbrida</a></li>
+                    <li><a href="#innovacion">Safety Sense 3.0</a></li>
+                    <li><a href="#concesionarios">Red de Concesionarios</a></li>
+                    <li><a href="#testdrive">Pruebas de Manejo</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Boletín Informativo</h4>
+                <p style="font-size: 13px; margin-bottom: 1rem;">Suscríbete para recibir noticias sobre nuevos lanzamientos y preventas exclusivas.</p>
+                <form onsubmit="handleNewsletter(event)">
+                    <input type="email" required placeholder="Tu correo electrónico" class="form-control" style="margin-bottom: 8px; padding: 10px 14px; font-size: 13px;">
+                    <button type="submit" class="btn-primary" style="width: 100%; padding: 10px; font-size: 12px; justify-content: center; border: none; cursor: pointer;">
+                        Suscribirme
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Toyota Motor Corporation. Todos los derechos reservados.</p>
+            <div class="footer-legal">
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Términos de Uso</a>
+                <a href="#">Cookies</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileToggleBtn = document.getElementById('mobile-toggle-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileToggleBtn.addEventListener('click', () => {
+            if (mobileMenu.style.display === 'flex') {
+                mobileMenu.style.display = 'none';
+            } else {
+                mobileMenu.style.display = 'flex';
+            }
+        });
+
+        // Car Database for Modal Details
+        const carsData = {
+            hilux: {
+                title: "Toyota Hilux GR-Sport",
+                category: "Pickup 4x4",
+                price: "$48,900",
+                image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=1000&auto=format&fit=crop",
+                desc: "La Toyota Hilux GR-Sport está inspirada en la mítica competencia Dakar. Equipada con amortiguadores monotubo KYB, calibración deportiva Gazoo Racing y un potente motor turbodiésel de 2.8 litros para dominar cualquier terreno con absoluta autoridad.",
+                engine: "2.8L 4 Cilindros Turbo Diesel",
+                hp: "224 HP @ 3,000 rpm",
+                trans: "Automática secuencial de 6 velocidades",
+                extra: "Tracción 4x4 con reductora",
+                features: [
+                    "Suspensión deportiva Gazoo Racing",
+                    "Bloqueo de diferencial trasero",
+                    "Sistema de audio premium JBL con 9 parlantes",
+                    "Toyota Safety Sense 3.0 completo",
+                    "Asientos deportivos en cuero y alcántara con costuras rojas",
+                    "Capacidad de arrastre de hasta 3,500 kg"
+                ]
+            },
+            landcruiser: {
+                title: "Toyota Land Cruiser 300",
+                category: "SUV Lujo / 4x4",
+                price: "$89,500",
+                image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?q=80&w=1000&auto=format&fit=crop",
+                desc: "El buque insignia de la familia todoterreno de Toyota. La Land Cruiser 300 redefine el lujo y la durabilidad, incorporando un chasis GA-F más ligero y rígido junto con el sistema E-KDSS para una articulación de suspensión insuperable.",
+                engine: "3.5L V6 Biturbo Gasolina",
+                hp: "409 HP @ 5,200 rpm",
+                trans: "Automática Direct Shift de 10 velocidades",
+                extra: "Tracción 4x4 Permanente con Multi-Terrain Select",
+                features: [
+                    "Sistema E-KDSS (Suspensión Dinámica Cinética Electrónica)",
+                    "Cámaras de visión 360° con monitor de terreno Multi-Terrain",
+                    "Pantalla táctil multimedia de 12.3 pulgadas",
+                    "Climatizador automático de 4 zonas independientes",
+                    "Asientos delanteros ventilados y calefactados con memoria",
+                    "Sistema de sonido JBL Surround de 14 altavoces"
+                ]
+            },
+            corolla: {
+                title: "Toyota Corolla Hybrid",
+                category: "Sedán Híbrido",
+                price: "$26,800",
+                image: "https://images.unsplash.com/photo-1623869675781-80aa310129e5?q=80&w=1000&auto=format&fit=crop",
+                desc: "El sedán más emblemático del mundo ahora con tecnología híbrida autorrecargable. El Corolla Hybrid ofrece una conducción extraordinariamente silenciosa, refinada y con un consumo de combustible líder en su clase.",
+                engine: "1.8L 4 Cilindros + Motor Eléctrico",
+                hp: "138 HP Combinados",
+                trans: "Transmisión electrónica e-CVT",
+                extra: "Rendimiento: 25 km/L en ciudad",
+                features: [
+                    "Sistema híbrido autorrecargable de 4ta generación",
+                    "Modo de conducción 100% eléctrico (EV Mode)",
+                    "Tablero digital configurable de 7 pulgadas",
+                    "Toyota Safety Sense con Asistente de Mantenimiento de Carril",
+                    "Apple CarPlay y Android Auto inalámbricos",
+                    "Faros delanteros LED bi-beam con nivelación automática"
+                ]
+            },
+            rav4: {
+                title: "Toyota RAV4 Hybrid AWD",
+                category: "SUV Híbrido",
+                price: "$34,500",
+                image: "https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=1000&auto=format&fit=crop",
+                desc: "El pionero de los SUVs compactos y el vehículo más vendido de su categoría. La RAV4 Hybrid con tracción total inteligente (AWD-i) brinda confianza total en condiciones climáticas adversas con máxima eficiencia.",
+                engine: "2.5L 4 Cilindros + Doble Motor Eléctrico",
+                hp: "219 HP Combinados",
+                trans: "Automática e-CVT con tracción AWD-i",
+                extra: "Tracción Integral Eléctrica Inteligente",
+                features: [
+                    "Sistema de tracción integral eléctrica AWD-i",
+                    "Portón trasero eléctrico con apertura manos libres",
+                    "Techo panorámico corredizo",
+                    "Asistente de arranque y descenso en pendientes",
+                    "Cargador inalámbrico para teléfonos inteligentes",
+                    "Capacidad de maletero de 580 litros"
+                ]
+            },
+            yariscross: {
+                title: "Toyota Yaris Cross Hybrid",
+                category: "Compact SUV",
+                price: "$28,200",
+                image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=1000&auto=format&fit=crop",
+                desc: "Diseñado específicamente para la ciudad y escapadas de fin de semana. El Yaris Cross combina una postura elevada de SUV, dimensiones compactas excepcionales para estacionar y la legendaria tecnología híbrida de Toyota.",
+                engine: "1.5L 3 Cilindros Dynamic Force Híbrido",
+                hp: "116 HP Combinados",
+                trans: "Transmisión e-CVT",
+                extra: "Rendimiento: 26 km/L",
+                features: [
+                    "Diseño exterior bi-tono deportivo",
+                    "Asientos traseros abatibles en proporción 40:20:40",
+                    "Pantalla táctil multimedia de 9 pulgadas HD",
+                    "Sistema Toyota Safety Sense completo",
+                    "Sensores de estacionamiento delanteros y traseros con frenado automático",
+                    "Excelente altura libre al suelo de 170 mm"
+                ]
+            },
+            supra: {
+                title: "Toyota GR Supra 3.0L",
+                category: "Deportivo",
+                price: "$56,400",
+                image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1000&auto=format&fit=crop",
+                desc: "Nacido para la pista y homologado para la calle. El GR Supra es un deportivo biplaza puro con motor de 6 cilindros en línea, reparto de pesos perfecto 50:50 y un sonido de escape embriagador.",
+                engine: "3.0L 6 Cilindros en Línea Twin-Scroll Turbo",
+                hp: "382 HP @ 5,800 rpm",
+                trans: "Manual inteligente de 6 velocidades o Automática 8Vel",
+                extra: "Aceleración 0-100 km/h en 4.1s",
+                features: [
+                    "Diferencial trasero activo con bloqueo electrónico",
+                    "Frenos deportivos Brembo con pinzas de 4 pistones",
+                    "Suspensión variable adaptativa (AVS)",
+                    "Sistema de audio JBL premium de 12 altavoces",
+                    "Asientos deportivos tipo Bucket calefactados en cuero",
+                    "Modos de conducción Normal y Sport con personalización GR"
+                ]
+            }
+        };
+
+        // Modal Functions
+        function openCarModal(carKey) {
+            const car = carsData[carKey];
+            if (!car) return;
+
+            document.getElementById('modal-img').src = car.image;
+            document.getElementById('modal-category').innerText = car.category;
+            document.getElementById('modal-title').innerText = car.title;
+            document.getElementById('modal-price').innerText = car.price;
+            document.getElementById('modal-desc').innerText = car.desc;
+            document.getElementById('modal-engine').innerText = car.engine;
+            document.getElementById('modal-hp').innerText = car.hp;
+            document.getElementById('modal-trans').innerText = car.trans;
+            document.getElementById('modal-extra').innerText = car.extra;
+
+            // Populate features
+            const featuresContainer = document.getElementById('modal-features');
+            featuresContainer.innerHTML = '';
+            car.features.forEach(feature => {
+                const div = document.createElement('div');
+                div.className = 'feature-check';
+                div.innerHTML = `<i class="fa-solid fa-check"></i> <span>${feature}</span>`;
+                featuresContainer.appendChild(div);
+            });
+
+            // Set model select in form
+            const formSelect = document.getElementById('form-model-select');
+            for(let i=0; i<formSelect.options.length; i++) {
+                if(formSelect.options[i].text.toLowerCase().includes(carKey.toLowerCase()) || 
+                   car.title.toLowerCase().includes(formSelect.options[i].value.toLowerCase())) {
+                    formSelect.selectedIndex = i;
+                    break;
+                }
+            }
+
+            document.getElementById('car-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCarModal() {
+            document.getElementById('car-modal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function selectCarAndCloseModal() {
+            closeCarModal();
+        }
+
+        // Close modal on background click
+        document.getElementById('car-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'car-modal') {
+                closeCarModal();
+            }
+        });
+
+        // Interactive Filtering System
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const carCards = document.querySelectorAll('.car-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                carCards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    if (filterValue === 'all' || category.includes(filterValue)) {
+                        card.style.display = 'flex';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1)';
+                        }, 50);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // Form Submission Handler
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const successBox = document.getElementById('success-box');
+            successBox.style.display = 'block';
+            successBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            event.target.reset();
+
+            setTimeout(() => {
+                successBox.style.display = 'none';
+            }, 6000);
+        }
+
+        function handleNewsletter(event) {
+            event.preventDefault();
+            alert('¡Gracias por suscribirte al boletín oficial de Toyota!');
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
